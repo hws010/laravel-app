@@ -9,6 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}</title>
+    <style>
+        .NewStile{
+            max-width: 300px;
+        }
+
+        .card{
+            background: #e3e3; 
+            padding: 1rem; 
+            text-align:center;
+        }
+    </style>
 </head>
 <body>
     <nav>
