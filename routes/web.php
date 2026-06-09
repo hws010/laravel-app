@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\IdeaController;
-use App\Models\Idea;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/ideas', [IdeaController::class, 'index'])->name('ideasIndex');
