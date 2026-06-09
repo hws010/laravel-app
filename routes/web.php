@@ -1,32 +1,19 @@
 <?php
 
+use App\Http\Controllers\IdeaController;
 use App\Models\Idea;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function(){
-    $state = request('state');
-    $ideas = Idea::query()
-    ->when($state, function($query, $state){
-        $query->where('state', $state);
-    })->get();
+Route::get('/ideas', [IdeaController::class, 'index'])->name('ideasIndex');
 
-    return view('home', [
-        'ideas' => $ideas
-    ]);
-});
+Route::get('/ideas/create', [IdeaController::class, 'create'])->name('ideasCreate');
 
-Route::post('/', function(){
-    $idea = request()->idea;
+Route::post('/ideas/create', [IdeaController::class, 'store'])->name('ideasCreate');
 
-    Idea::create([
-        'descreption' => $idea,
-        'state' => 'pendding',
-    ]);
+Route::get("/ideas/{idea}", [IdeaController::class, 'show'])->name('ideasView');
 
-    return redirect('/');
-})->name('about');
+Route::get("/ideas/{idea}/edit", [IdeaController::class, 'edit'])->name('ideasEdit');
 
-Route::get('/delete-ideas', function(){
-    session()->forget('ideas');
-    return redirect('/');
-});
+Route::patch("/ideas/{idea}/edit", [IdeaController::class, 'update'])->name('ideasEdit');
+
+Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideasDelete');

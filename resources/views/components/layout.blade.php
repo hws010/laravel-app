@@ -24,9 +24,7 @@
     </style>
 </head>
 <body class="bg-gray-900 text-white"> <nav class="p-4 bg-gray-800 flex gap-4">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
+        <a href="{{ route('ideasIndex') }}">Ideas</a>
     </nav>
     
     <div class="flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
