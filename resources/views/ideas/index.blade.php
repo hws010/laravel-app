@@ -1,35 +1,24 @@
 <x-layout title="Home">
     <h1 class="text-3xl font-bold mb-4">Ideas</h1>
     
-    <div class="w-full max-w-md">
+    <div class="w-full">
 
-        <div class="table-responsive">
-            <div class="mt-6 flex items-center justify-end gap-x-6">
-                <a href="{{ route('ideasCreate') }}" type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Create a New Idea</a>
-            </div>
-            <br>
-            <table class="table header-border table-responsive-sm">
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>idea</th>
-                        <th>created at</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse($ideas as $idea)
-                    <tr>
-                        <td>{{ $idea->id }}</td>
-                        <td>{{ $idea->descreption }}</td>
-                        <td>{{ $idea->created_at }}</td>
-                        <td><a href="{{ route('ideasView',$idea->id) }}">View</a>
-                        </td>
-                    </tr>
-                    @empty
-                    <li>no ideas</li>
-                    @endforelse
-                </tbody>
-            </table>
+        <div class="mt-6 flex items-center justify-end gap-x-6">
+            <a href="{{ route('ideasCreate') }}" type="submit" class="btn text-xl">Create a New Idea</a>
         </div>
+        <br>
+        <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
+            @forelse($ideas as $idea)
+            <x-items.card cardTitile="{{ $idea->id }}" cardBody="{{ $idea->descreption }}" route="{{ route('ideasView', [$idea->id]) }}" />
+            @empty
+            <div class="card bg-neutral text-neutral-content w-96">
+                <div class="card-body">
+                    <h2 class="card-title">#</h2>
+                    <p>Nothing is here</p>
+                </div>
+            </div>
+            @endforelse
+        </ul>
     </div>
+    
 </x-layout>
