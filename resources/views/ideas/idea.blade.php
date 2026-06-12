@@ -1,25 +1,26 @@
 <x-layout title="idea {{ $idea->id }}">
-    <h1 class="text-3xl font-bold mb-4">Home</h1>
     
-    <div class="w-full max-w-md">
-        <label>ID:</label>
-        <h1>{{ $idea->id }}</h1>
-        <br>
-        <label>Descreption:</label>
-        <p>{{ $idea->descreption }}</p>
-        <br>
+    <div class="card bg-neutral p-6">
+        <div class="flex gap-1 pb-4">
+            <label>ID:</label>
+            <h1>{{ $idea->id }}</h1>
+        </div>
         <div>
+            <label>Descreption:</label>
+            <p>{{ $idea->descreption }}</p>
+        </div>
+        <div class="flex justify-between pt-5">
             <a href="{{ route('ideasEdit', $idea->id) }}" type="submit" class="btn text-xl">
                 Edit
             </a>
-        </div>
-        <br>
-        <form action="{{ route('ideasDelete', $idea->id) }}" method="post">
-            @csrf
-            @method('delete')
-            <button type="submit" class="btn text-xl">
+            <button type="submit" class="btn btn-error text-xl" form="delete">
                 Delete
             </button>
+        </div>
+        <form id="delete" action="{{ route('ideasDelete', $idea->id) }}" method="post">
+            @csrf
+            @method('delete')
+            
         </form>
     </div>
 </x-layout>
