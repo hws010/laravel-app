@@ -1,7 +1,7 @@
-<x-layout title="Home">
-    <h1 class="text-3xl font-bold mb-4">Home</h1>
+<x-layout title="Create">
+    <h1 class="text-3xl font-bold mb-4">Create</h1>
     
-    <div class="w-full max-w-md">
+    <div class="card bg-neutral p-6">
         <form action="{{ route('ideasCreate') }}" method="post">
             @csrf
             <div class="col-span-full">

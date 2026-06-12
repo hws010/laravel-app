@@ -4,7 +4,7 @@
     <div class="w-full">
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
-            <a href="{{ route('ideasCreate') }}" type="submit" class="btn text-xl">Create a New Idea</a>
+            <a href="{{ route('ideasCreate') }}" type="submit" class="btn btn-neutral text-xl">Create a New Idea</a>
         </div>
         <br>
         <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
