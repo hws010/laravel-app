@@ -9,10 +9,24 @@
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
+      <li><a href="{{ route('home') }}">Home</a></li>
       <li><a href="{{ route('ideasIndex') }}">Ideas</a></li>
+      @can('view-admin')
+        <li><a href="/admin">admin</a></li>
+      @endcan
     </ul>
   </div>
   <div class="navbar-end">
-    <a class="btn">Button</a>
+    @guest
+      <a class="btn" href="{{ route('create-account') }}">Register</a>
+      <a class="btn" href="{{ route('login') }}">Login</a>
+    @endguest
+    @auth
+      <form action="{{ route('logout') }}" method="post">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-error">Logout</button>
+      </form>
+    @endauth
   </div>
 </div>

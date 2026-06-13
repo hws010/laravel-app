@@ -9,7 +9,7 @@
         <br>
         <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
             @forelse($ideas as $idea)
-            <x-items.card cardTitile="{{ $idea->id }}" cardBody="{{ $idea->descreption }}" route="{{ route('ideasView', [$idea->id]) }}" />
+            <x-items.card cardTitile="{{ $idea->statee }}" cardBody="{{ $idea->descreption }}" route="{{ route('ideasView', [$idea->id]) }}" />
             @empty
             <div class="card bg-neutral text-neutral-content w-96">
                 <div class="card-body">
